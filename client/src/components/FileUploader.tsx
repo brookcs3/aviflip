@@ -46,40 +46,43 @@ export const FileUploader = ({ onFilesAdded }: FileUploaderProps) => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto mb-12">
+    <div>
       <div
-        className={`flex justify-center px-6 pt-8 pb-8 border-2 border-dashed rounded-xl cursor-pointer transition-all duration-200 ease-in-out ${
+        className={`flex justify-center px-6 py-10 border-2 border-dashed rounded-t-lg cursor-pointer transition-all duration-200 ease-in-out ${
           isDragging 
-            ? "border-primary bg-primary/5 shadow-lg" 
-            : "border-gray-300 hover:border-primary/60 hover:bg-primary/5"
+            ? "border-primary bg-primary/5" 
+            : "border-gray-200 hover:border-primary/40 hover:bg-gray-50"
         }`}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
         onClick={handleButtonClick}
       >
-        <div className="space-y-3 text-center">
-          <Upload className="mx-auto h-14 w-14 text-primary opacity-80" />
-          <div className="flex flex-col sm:flex-row items-center justify-center text-sm text-gray-600">
-            <label
-              htmlFor="file-upload"
-              className="relative cursor-pointer font-medium text-primary hover:text-primary/80 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-primary"
-            >
-              <span>Upload a JPG file</span>
-              <input
-                id="file-upload"
-                name="file-upload"
-                type="file"
-                className="sr-only"
-                accept=".jpg,.jpeg"
-                multiple
-                ref={fileInputRef}
-                onChange={handleFileSelect}
-              />
-            </label>
-            <p className="sm:pl-1">or drag and drop</p>
+        <div className="space-y-4 text-center">
+          <Upload className="mx-auto h-12 w-12 text-primary/70" />
+          <div>
+            <p className="text-sm text-gray-700 font-medium">Drop your JPG files here</p>
+            <div className="flex items-center justify-center mt-2 text-sm text-gray-500">
+              <label
+                htmlFor="file-upload"
+                className="relative cursor-pointer font-medium text-primary hover:text-primary/80 focus-within:outline-none"
+              >
+                <span>Upload files</span>
+                <input
+                  id="file-upload"
+                  name="file-upload"
+                  type="file"
+                  className="sr-only"
+                  accept=".jpg,.jpeg"
+                  multiple
+                  ref={fileInputRef}
+                  onChange={handleFileSelect}
+                />
+              </label>
+              <p className="pl-1">or drag and drop</p>
+            </div>
           </div>
-          <p className="text-xs text-gray-500">JPG only, up to 10MB per file</p>
+          <p className="text-xs text-gray-400">JPG and JPEG formats supported</p>
         </div>
       </div>
     </div>

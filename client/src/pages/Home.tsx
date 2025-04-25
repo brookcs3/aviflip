@@ -8,22 +8,24 @@ export const Home = () => {
     <div className="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
       <Header />
       
-      <main className="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Hero Section */}
-        <section className="text-center mb-10">
-          <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-600">
-            Convert JPG to AVIF
-          </h2>
-          <p className="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
-            Transform your JPG images to the modern AVIF format for better compression and quality.
-          </p>
-        </section>
-        
-        {/* Conversion Area */}
-        <ConversionArea />
-        
-        {/* Info Section */}
-        <InfoSection />
+      <main className="flex-grow py-6">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Hero Section */}
+          <section className="text-center mb-8">
+            <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-600">
+              Convert JPG to AVIF
+            </h1>
+            <p className="mt-3 text-xl text-gray-500 sm:mt-4">
+              Fast, free, and completely private - no files are uploaded to any server
+            </p>
+          </section>
+          
+          {/* Conversion Area */}
+          <ConversionArea />
+          
+          {/* Info Section */}
+          <InfoSection />
+        </div>
       </main>
       
       <Footer />

@@ -27,17 +27,19 @@ export const ConversionArea = () => {
   };
 
   return (
-    <div className="max-w-5xl mx-auto">
-      <FileUploader onFilesAdded={handleFilesAdded} />
-      <FileList
-        files={files}
-        onRemoveFile={handleRemoveFile}
-        onDownloadFile={handleDownloadFile}
-        onConvertFiles={convertFiles}
-        onResetConverter={resetConverter}
-        onDownloadAllFiles={downloadAllFiles}
-        isConverting={isConverting}
-      />
+    <div className="space-y-6">
+      <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+        <FileUploader onFilesAdded={handleFilesAdded} />
+        <FileList
+          files={files}
+          onRemoveFile={handleRemoveFile}
+          onDownloadFile={handleDownloadFile}
+          onConvertFiles={convertFiles}
+          onResetConverter={resetConverter}
+          onDownloadAllFiles={downloadAllFiles}
+          isConverting={isConverting}
+        />
+      </div>
     </div>
   );
 };
