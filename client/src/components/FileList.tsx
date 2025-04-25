@@ -49,31 +49,31 @@ export const FileList = ({
   }
   
   return (
-    <div className="space-y-8">
+    <div className="p-5 space-y-6">
       {pendingFiles.length > 0 && (
         <div>
-          <h3 className="text-xl font-semibold text-gray-900 mb-4">Files to Convert</h3>
-          <div className="space-y-4">
+          <h3 className="text-base font-medium text-gray-900 mb-3">Files to Convert</h3>
+          <div className="space-y-3">
             {pendingFiles.map((fileItem, index) => (
               <div 
                 key={`pending-${index}`} 
-                className="bg-white shadow-sm rounded-xl p-4 border border-gray-200 flex items-center justify-between transition hover:shadow-md"
+                className="bg-gray-50 rounded-md p-3 border border-gray-100 flex items-center justify-between"
               >
                 <div className="flex items-center">
-                  <div className="h-10 w-10 flex items-center justify-center bg-blue-50 rounded-lg">
-                    <Image className="h-6 w-6 text-primary" />
+                  <div className="h-9 w-9 flex items-center justify-center bg-gray-100 rounded-md">
+                    <Image className="h-5 w-5 text-gray-500" />
                   </div>
-                  <div className="ml-4">
-                    <h4 className="text-sm font-medium text-gray-900">{fileItem.file.name}</h4>
+                  <div className="ml-3">
+                    <h4 className="text-sm font-medium text-gray-800">{fileItem.file.name}</h4>
                     <p className="text-xs text-gray-500">{formatFileSize(fileItem.file.size)}</p>
                   </div>
                 </div>
                 <button 
-                  className="text-gray-400 hover:text-gray-500 focus:outline-none transition-colors"
+                  className="text-gray-400 hover:text-gray-600 focus:outline-none"
                   onClick={() => onRemoveFile(files.indexOf(fileItem))}
                   disabled={isConverting}
                 >
-                  <X className="h-5 w-5" />
+                  <X className="h-4 w-4" />
                 </button>
               </div>
             ))}
@@ -83,18 +83,18 @@ export const FileList = ({
       
       {convertingFiles.length > 0 && (
         <div>
-          <h3 className="text-xl font-semibold text-gray-900 mb-4">Converting...</h3>
-          <div className="space-y-4">
+          <h3 className="text-base font-medium text-gray-900 mb-3">Converting</h3>
+          <div className="space-y-3">
             {convertingFiles.map((fileItem, index) => (
-              <div key={`converting-${index}`} className="bg-white shadow-sm rounded-xl p-4 border border-primary/30 bg-blue-50/50">
+              <div key={`converting-${index}`} className="bg-gray-50 rounded-md p-3 border border-primary/20">
                 <div className="flex items-center">
-                  <div className="h-10 w-10 flex items-center justify-center bg-blue-100 rounded-lg">
-                    <Loader2 className="h-6 w-6 text-primary animate-spin" />
+                  <div className="h-9 w-9 flex items-center justify-center bg-primary/10 rounded-md">
+                    <Loader2 className="h-5 w-5 text-primary animate-spin" />
                   </div>
-                  <div className="ml-4 flex-1">
-                    <h4 className="text-sm font-medium text-gray-900">{fileItem.file.name}</h4>
+                  <div className="ml-3 flex-1">
+                    <h4 className="text-sm font-medium text-gray-800">{fileItem.file.name}</h4>
                     <div className="mt-2">
-                      <Progress className="h-2" value={30} />
+                      <Progress className="h-1.5" value={50} />
                     </div>
                   </div>
                 </div>
@@ -106,23 +106,23 @@ export const FileList = ({
       
       {errorFiles.length > 0 && (
         <div>
-          <h3 className="text-xl font-semibold text-gray-900 mb-4">Failed Conversions</h3>
-          <div className="space-y-4">
+          <h3 className="text-base font-medium text-gray-900 mb-3">Failed Conversions</h3>
+          <div className="space-y-3">
             {errorFiles.map((fileItem, index) => (
-              <div key={`error-${index}`} className="bg-white shadow-sm rounded-xl p-4 border border-red-200 bg-red-50">
+              <div key={`error-${index}`} className="bg-red-50 rounded-md p-3 border border-red-100">
                 <div className="flex items-center">
-                  <div className="h-10 w-10 flex items-center justify-center bg-red-100 rounded-lg">
-                    <Image className="h-6 w-6 text-red-400" />
+                  <div className="h-9 w-9 flex items-center justify-center bg-red-100 rounded-md">
+                    <Image className="h-5 w-5 text-red-500" />
                   </div>
-                  <div className="ml-4 flex-1">
-                    <h4 className="text-sm font-medium text-gray-900">{fileItem.file.name}</h4>
-                    <p className="text-xs text-red-500 mt-1">{fileItem.error || 'Failed to convert'}</p>
+                  <div className="ml-3 flex-1">
+                    <h4 className="text-sm font-medium text-gray-800">{fileItem.file.name}</h4>
+                    <p className="text-xs text-red-500 mt-1">{fileItem.error || 'Conversion failed'}</p>
                   </div>
                   <button 
-                    className="text-gray-400 hover:text-gray-500 focus:outline-none"
+                    className="text-gray-400 hover:text-gray-600 focus:outline-none"
                     onClick={() => onRemoveFile(files.indexOf(fileItem))}
                   >
-                    <X className="h-5 w-5" />
+                    <X className="h-4 w-4" />
                   </button>
                 </div>
               </div>
@@ -133,15 +133,15 @@ export const FileList = ({
       
       {convertedFiles.length > 0 && (
         <div>
-          <h3 className="text-xl font-semibold text-gray-900 mb-4">Converted Files</h3>
-          <div className="space-y-4">
+          <h3 className="text-base font-medium text-gray-900 mb-3">Converted Files</h3>
+          <div className="space-y-3">
             {convertedFiles.map((fileItem, index) => {
               const fileData = fileItem.convertedData!;
               return (
-                <div key={`converted-${index}`} className="bg-white shadow-sm rounded-xl p-4 border border-gray-200 hover:shadow-md transition">
+                <div key={`converted-${index}`} className="bg-gray-50 rounded-md p-3 border border-gray-100">
                   <div className="sm:flex sm:items-center sm:justify-between">
                     <div className="flex items-center">
-                      <div className="flex-shrink-0 h-16 w-16 bg-gray-100 rounded-lg overflow-hidden">
+                      <div className="flex-shrink-0 h-12 w-12 bg-gray-100 rounded-md overflow-hidden">
                         {fileItem.file.preview && (
                           <img 
                             src={fileItem.file.preview} 
@@ -150,24 +150,25 @@ export const FileList = ({
                           />
                         )}
                       </div>
-                      <div className="ml-4">
-                        <h4 className="text-sm font-medium text-gray-900">{fileData.convertedName}</h4>
+                      <div className="ml-3">
+                        <h4 className="text-sm font-medium text-gray-800">{fileData.convertedName}</h4>
                         <div className="mt-1 flex items-center">
                           <span className="text-xs text-gray-500">{formatFileSize(fileData.originalSize)}</span>
-                          <ArrowRight className="mx-1 h-4 w-4 text-gray-400" />
+                          <ArrowRight className="mx-1 h-3 w-3 text-gray-400" />
                           <span className="text-xs text-green-600 font-medium">{formatFileSize(fileData.convertedSize)}</span>
-                          <Badge variant="outline" className="ml-2 bg-green-100 text-green-600 hover:bg-green-100 border-green-200">
+                          <Badge variant="outline" className="ml-2 text-xs bg-green-50 text-green-600 hover:bg-green-50 border-green-100">
                             -{fileData.savings}%
                           </Badge>
                         </div>
                       </div>
                     </div>
-                    <div className="mt-4 sm:mt-0">
+                    <div className="mt-3 sm:mt-0">
                       <Button 
                         onClick={() => onDownloadFile(files.indexOf(fileItem))}
-                        className="inline-flex items-center bg-primary hover:bg-primary/90"
+                        className="h-8 px-3 text-xs bg-primary hover:bg-primary/90"
+                        size="sm"
                       >
-                        <Download className="-ml-1 mr-2 h-4 w-4" />
+                        <Download className="mr-1 h-3 w-3" />
                         Download
                       </Button>
                     </div>
@@ -179,21 +180,21 @@ export const FileList = ({
         </div>
       )}
       
-      <div className="mt-8 flex flex-col sm:flex-row sm:justify-between gap-4">
+      <div className="pt-3 border-t border-gray-100 flex flex-col sm:flex-row sm:justify-between gap-3">
         <Button 
           onClick={onConvertFiles} 
           disabled={pendingFiles.length === 0 || isConverting}
-          className="inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-lg transition shadow-sm"
-          size="lg"
+          className="bg-primary hover:bg-primary/90 text-white py-2 rounded-md text-sm font-medium"
+          size="default"
         >
           {isConverting ? (
             <>
-              <Loader2 className="-ml-1 mr-2 h-5 w-5 animate-spin" />
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
               Converting...
             </>
           ) : (
             <>
-              <svg className="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
               </svg>
               Convert to AVIF
@@ -204,20 +205,21 @@ export const FileList = ({
           variant="outline" 
           onClick={onResetConverter}
           disabled={isConverting}
-          className="border-gray-300 text-gray-700 hover:bg-gray-50"
+          className="border-gray-200 text-gray-600 hover:bg-gray-50 text-sm font-medium"
+          size="default"
         >
           Clear All
         </Button>
       </div>
       
       {convertedFiles.length > 0 && (
-        <div className="mt-4">
+        <div className="mt-3">
           <Button 
             onClick={onDownloadAllFiles}
-            className="w-full bg-green-600 hover:bg-green-700 text-white py-2.5 rounded-lg transition shadow-sm"
-            size="lg"
+            className="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-md text-sm font-medium"
+            size="default"
           >
-            <Download className="-ml-1 mr-2 h-5 w-5" />
+            <Download className="mr-2 h-4 w-4" />
             Download All Files
           </Button>
         </div>

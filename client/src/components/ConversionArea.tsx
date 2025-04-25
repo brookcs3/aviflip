@@ -1,4 +1,4 @@
-import { useFileConversion } from "@/hooks/use-file-conversion";
+import { useFileConversion, FileWithPreview } from "@/hooks/use-file-conversion";
 import FileUploader from "./FileUploader";
 import FileList from "./FileList";
 
@@ -14,15 +14,15 @@ export const ConversionArea = () => {
     isConverting,
   } = useFileConversion();
 
-  const handleFilesAdded = (newFiles) => {
+  const handleFilesAdded = (newFiles: FileWithPreview[]) => {
     addFiles(newFiles);
   };
 
-  const handleRemoveFile = (index) => {
+  const handleRemoveFile = (index: number) => {
     removeFile(files[index].file);
   };
 
-  const handleDownloadFile = (index) => {
+  const handleDownloadFile = (index: number) => {
     downloadFile(files[index]);
   };
 
