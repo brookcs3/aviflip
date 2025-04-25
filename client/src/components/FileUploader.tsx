@@ -48,22 +48,22 @@ export const FileUploader = ({ onFilesAdded }: FileUploaderProps) => {
   return (
     <div className="max-w-3xl mx-auto mb-12">
       <div
-        className={`mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-dashed rounded-lg cursor-pointer hover:bg-gray-50 transition duration-150 ease-in-out ${
+        className={`flex justify-center px-6 pt-8 pb-8 border-2 border-dashed rounded-xl cursor-pointer transition-all duration-200 ease-in-out ${
           isDragging 
-            ? "border-primary bg-primary/5" 
-            : "border-gray-300"
+            ? "border-primary bg-primary/5 shadow-lg" 
+            : "border-gray-300 hover:border-primary/60 hover:bg-primary/5"
         }`}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
         onClick={handleButtonClick}
       >
-        <div className="space-y-1 text-center">
-          <Upload className="mx-auto h-12 w-12 text-gray-400" />
-          <div className="flex text-sm text-gray-600">
+        <div className="space-y-3 text-center">
+          <Upload className="mx-auto h-14 w-14 text-primary opacity-80" />
+          <div className="flex flex-col sm:flex-row items-center justify-center text-sm text-gray-600">
             <label
               htmlFor="file-upload"
-              className="relative cursor-pointer bg-white rounded-md font-medium text-primary hover:text-primary/80 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-primary"
+              className="relative cursor-pointer font-medium text-primary hover:text-primary/80 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-primary"
             >
               <span>Upload a JPG file</span>
               <input
@@ -77,7 +77,7 @@ export const FileUploader = ({ onFilesAdded }: FileUploaderProps) => {
                 onChange={handleFileSelect}
               />
             </label>
-            <p className="pl-1">or drag and drop</p>
+            <p className="sm:pl-1">or drag and drop</p>
           </div>
           <p className="text-xs text-gray-500">JPG only, up to 10MB per file</p>
         </div>
