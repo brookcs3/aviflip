@@ -14,7 +14,7 @@ export const Home = () => {
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Header Section */}
             <div className="text-center mb-8">
-              <h1 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+              <h1 className="text-3xl font-extrabold sm:text-4xl bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent animate-gradient">
                 Convert JPG to AVIF
               </h1>
               <p className="mt-3 text-xl text-gray-500 sm:mt-4">

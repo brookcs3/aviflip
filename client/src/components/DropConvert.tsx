@@ -297,7 +297,7 @@ const DropConvert = () => {
       {(isIdle || isReady) && (
         <div 
           {...getRootProps()} 
-          className={`border-2 border-dashed rounded-lg p-6 mb-4 transition-colors duration-150 ease-in-out cursor-pointer ${
+          className={`border-2 border-dashed rounded-lg p-6 mb-4 transition-all duration-300 cursor-pointer transform hover:scale-[1.01] hover:shadow-md ${
             isDragActive ? "border-primary bg-primary/5" : "border-gray-200 hover:border-primary/50"
           } ${isReady ? "bg-gray-50" : "bg-gray-50/50"}`}
         >
@@ -305,12 +305,12 @@ const DropConvert = () => {
           
           <div className="flex flex-col items-center justify-center text-center">
             {isDragActive ? (
-              <Cloud className="h-12 w-12 text-primary mb-4" />
+              <Cloud className="h-12 w-12 text-primary mb-4 transition-all duration-300 transform hover:scale-110" />
             ) : (
-              <Cloud className="h-12 w-12 text-gray-400 mb-4" />
+              <Cloud className="h-12 w-12 text-gray-400 mb-4 transition-all duration-300 transform group-hover:text-primary" />
             )}
             
-            <p className="text-sm font-medium text-gray-900 mb-1">
+            <p className="text-sm font-medium text-gray-900 mb-1 transition-colors duration-300 hover:text-primary">
               {isDragActive ? "Drop files here..." : "Drag & drop files here"}
             </p>
             <p className="text-xs text-gray-500 mb-3">or click to select files</p>
@@ -444,6 +444,7 @@ const DropConvert = () => {
               size="sm"
               onClick={handleProcessFiles}
               disabled={isProcessing || files.length === 0}
+              className="transition-all duration-300 transform hover:scale-105 hover:shadow-md bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary"
             >
               {isProcessing ? (
                 <>
@@ -452,7 +453,7 @@ const DropConvert = () => {
                 </>
               ) : (
                 <>
-                  <RefreshCw className="mr-2 h-4 w-4" />
+                  <RefreshCw className="mr-2 h-4 w-4 transition-transform duration-300 group-hover:rotate-180" />
                   Convert {files.length > 0 ? `${files.length} ${files.length === 1 ? 'File' : 'Files'}` : 'Files'}
                 </>
               )}
@@ -464,8 +465,9 @@ const DropConvert = () => {
               variant="default"
               size="sm"
               onClick={handleDownloadAll}
+              className="transition-all duration-300 transform hover:scale-105 hover:shadow-md bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary"
             >
-              <Download className="mr-2 h-4 w-4" />
+              <Download className="mr-2 h-4 w-4 transition-transform duration-300 group-hover:translate-y-0.5" />
               Download All as ZIP
             </Button>
           )}
