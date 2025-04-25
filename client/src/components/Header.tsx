@@ -1,32 +1,37 @@
-import { GithubIcon } from "lucide-react";
+import { Github } from "lucide-react";
+import { siteConfig } from "../config";
 
-export const Header = () => {
+const Header = () => {
   return (
-    <header className="bg-white shadow-sm">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <div className="flex items-center">
-            <svg className="h-7 w-7 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M19.423 8.397l-12-7a1 1 0 0 0-1.007-.033A1 1 0 0 0 6 2v16a1 1 0 0 0 .416.736 1 1 0 0 0 .578.264 1 1 0 0 0 .429-.067l12-7a1 1 0 0 0 0-1.736z"/>
-            </svg>
-            <h1 className="ml-2 text-lg font-semibold text-gray-900">
-              JPG to AVIF
-            </h1>
+    <nav className="bg-white shadow-sm">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between h-16">
+          <div className="flex">
+            <div className="flex-shrink-0 flex items-center">
+              <div className="flex items-center">
+                <svg 
+                  className="h-8 w-8" 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  viewBox="0 0 24 24" 
+                  fill={siteConfig.primaryColor}
+                >
+                  <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 100-16 8 8 0 000 16zM10.622 8.415l4.879 2.616c.449.264.449.69 0 .949l-4.879 2.616c-.478.265-.97.03-.97-.44v-5.3c0-.47.492-.705.97-.44z"/>
+                </svg>
+                <span className="ml-2 text-xl font-bold text-gray-900" style={{ color: siteConfig.primaryColor }}>
+                  {siteConfig.logoText}
+                </span>
+              </div>
+            </div>
           </div>
-          <div className="flex items-center space-x-4">
-            <a
-              href="https://github.com/brookcs3/aviflip"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-gray-600 transition-colors"
-            >
-              <GithubIcon className="h-5 w-5" />
-              <span className="sr-only">GitHub repository</span>
+          <div className="flex items-center">
+            <a href="https://github.com/brookcs3/aviflip" className="text-gray-500 hover:text-gray-700" target="_blank" rel="noopener noreferrer">
+              <span className="sr-only">GitHub</span>
+              <Github className="h-6 w-6" />
             </a>
           </div>
         </div>
       </div>
-    </header>
+    </nav>
   );
 };
 
