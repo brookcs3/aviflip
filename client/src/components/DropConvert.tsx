@@ -135,22 +135,34 @@ const DropConvert = () => {
     }
   }, [files, convertedFiles]);
   
-  // Simple JPG to AVIF conversion using the browser's fetch API
+  // JPG to AVIF conversion using our backend API
   const convertJpgToAvif = async (file: File): Promise<Blob> => {
-    // For now, we'll just return a fake conversion to demonstrate the UI
-    // In a real implementation, this would use a proper conversion library
-    
     // Create a FormData to send to the server
     const formData = new FormData();
     formData.append('file', file);
     
     try {
-      // Here we'll just simulate a delay for demonstration
-      await new Promise(resolve => setTimeout(resolve, 500));
+      const response = await fetch('/api/convert', {
+        method: 'POST',
+        body: formData,
+      });
       
-      // Return the original file as a placeholder for now
-      // In a real implementation, this would be a converted AVIF file
-      return new Blob([await file.arrayBuffer()], { type: 'image/avif' });
+      if (!response.ok) {
+        throw new Error(`Server error: ${response.status}`);
+      }
+      
+      const result = await response.json();
+      
+      // Fetch the converted file from the download URL
+      const downloadResponse = await fetch(`/api/download/${result.id}`);
+      
+      if (!downloadResponse.ok) {
+        throw new Error(`Download error: ${downloadResponse.status}`);
+      }
+      
+      // Get the converted file as a blob
+      const convertedBlob = await downloadResponse.blob();
+      return convertedBlob;
     } catch (error) {
       console.error('Error converting file:', error);
       throw new Error('Failed to convert file');

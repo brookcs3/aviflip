@@ -1,6 +1,7 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import HowItWorks from "@/components/HowItWorks";
+import DropConvert from "@/components/DropConvert";
 import TechnicalDetails from "@/components/TechnicalDetails";
 
 export const Home = () => {
@@ -21,11 +22,7 @@ export const Home = () => {
               </p>
             </div>
 
-            {/* We'll add DropConvert soon */}
-            <div className="bg-white p-6 rounded-lg shadow-sm mb-8">
-              <p className="text-center text-gray-600">File converter component loading...</p>
-            </div>
-            
+            <DropConvert />
             <HowItWorks />
             <TechnicalDetails />
           </div>
