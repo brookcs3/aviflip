@@ -1,49 +1,66 @@
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import { Upload, RefreshCw, Download } from "lucide-react";
 
 export const InfoSection = () => {
   return (
-    <section className="mt-16 max-w-5xl mx-auto">
-      <Card>
-        <CardHeader className="px-4 py-5 sm:px-6">
-          <h2 className="text-lg leading-6 font-medium text-gray-900">About AVIF Format</h2>
-          <p className="mt-1 max-w-2xl text-sm text-gray-500">Learn why AVIF is the future of web images</p>
-        </CardHeader>
-        <CardContent className="border-t border-gray-200 px-4 py-5 sm:p-6">
-          <dl className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
-            <div className="sm:col-span-1">
-              <dt className="text-sm font-medium text-gray-500">Advantages</dt>
-              <dd className="mt-1 text-sm text-gray-900">
-                <ul className="list-disc pl-5 space-y-1">
-                  <li>Better compression than JPEG, PNG and WebP</li>
-                  <li>Supports transparency and animations</li>
-                  <li>Higher quality at smaller file sizes</li>
-                  <li>Supports HDR and wide color gamut</li>
-                </ul>
-              </dd>
+    <div className="space-y-8 mt-12">
+      {/* How It Works Section */}
+      <div className="bg-white rounded-lg shadow-sm p-5">
+        <h2 className="text-lg font-medium text-gray-900 mb-4">How It Works</h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {/* Step 1 */}
+          <div className="flex items-start space-x-3 p-4 bg-gray-50 rounded-lg border border-gray-100 hover:border-primary/20 hover:bg-gray-50/80 transition-colors duration-200">
+            <div className="bg-primary/10 p-2.5 rounded-md">
+              <Upload className="h-5 w-5 text-primary" />
             </div>
-            
-            <div className="sm:col-span-1">
-              <dt className="text-sm font-medium text-gray-500">Browser Support</dt>
-              <dd className="mt-1 text-sm text-gray-900">
-                <ul className="list-disc pl-5 space-y-1">
-                  <li>Chrome (version 85+)</li>
-                  <li>Firefox (version 93+)</li>
-                  <li>Opera (version 71+)</li>
-                  <li>Android Chrome (version 85+)</li>
-                </ul>
-              </dd>
+            <div>
+              <h3 className="text-sm font-medium text-gray-800">1. Drop Files</h3>
+              <p className="text-xs text-gray-500 mt-1">
+                Drop your JPG files into the converter
+              </p>
             </div>
-            
-            <div className="sm:col-span-2">
-              <dt className="text-sm font-medium text-gray-500">Use Cases</dt>
-              <dd className="mt-1 text-sm text-gray-900">
-                <p>AVIF is ideal for websites where image quality and performance are important. It's perfect for e-commerce, photography portfolios, news sites, and any web application where reducing bandwidth while maintaining quality is crucial.</p>
-              </dd>
+          </div>
+          
+          {/* Step 2 */}
+          <div className="flex items-start space-x-3 p-4 bg-gray-50 rounded-lg border border-gray-100 hover:border-primary/20 hover:bg-gray-50/80 transition-colors duration-200">
+            <div className="bg-primary/10 p-2.5 rounded-md">
+              <RefreshCw className="h-5 w-5 text-primary" />
             </div>
-          </dl>
-        </CardContent>
-      </Card>
-    </section>
+            <div>
+              <h3 className="text-sm font-medium text-gray-800">2. Convert</h3>
+              <p className="text-xs text-gray-500 mt-1">
+                Process entirely in your browser
+              </p>
+            </div>
+          </div>
+          
+          {/* Step 3 */}
+          <div className="flex items-start space-x-3 p-4 bg-gray-50 rounded-lg border border-gray-100 hover:border-primary/20 hover:bg-gray-50/80 transition-colors duration-200">
+            <div className="bg-primary/10 p-2.5 rounded-md">
+              <Download className="h-5 w-5 text-primary" />
+            </div>
+            <div>
+              <h3 className="text-sm font-medium text-gray-800">3. Download</h3>
+              <p className="text-xs text-gray-500 mt-1">
+                Get your AVIFs individually or as a ZIP
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Technical Details */}
+      <div className="bg-white rounded-lg shadow-sm p-6">
+        <h2 className="text-lg font-medium text-gray-900 mb-4">Privacy & Technical Details</h2>
+        <div className="space-y-4 text-sm text-gray-500">
+          <p><strong className="text-gray-700">100% Client-Side:</strong> Your files never leave your device. All processing happens in your browser.</p>
+          <p><strong className="text-gray-700">How it works:</strong> JPG to AVIF uses advanced browser technologies to convert JPG files to AVIF format locally.</p>
+          <p><strong className="text-gray-700">Supported Formats:</strong> Currently, we support JPG and JPEG files as input. More formats will be added soon.</p>
+          <p><strong className="text-gray-700">Performance:</strong> For optimal performance, we recommend using Chrome or Firefox with a reasonably fast device.</p>
+          <p><strong className="text-gray-700">File Size:</strong> There's no hard limit, but browser memory constraints may affect very large files.</p>
+        </div>
+      </div>
+    </div>
   );
 };
 
