@@ -1,21 +1,11 @@
 export const Footer = () => {
   return (
-    <footer className="bg-white mt-16">
-      <div className="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
-        <p className="text-center text-base text-gray-500">
-          &copy; {new Date().getFullYear()} JPG to AVIF Converter. All rights reserved.
-        </p>
-        <p className="text-center text-sm text-gray-500 mt-2">
-          Originally based on{" "}
-          <a
-            href="https://github.com/brookcs3/aviflip"
-            className="text-primary hover:text-primary/80"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            aviflip
-          </a>
-        </p>
+    <footer className="bg-white mt-12">
+      <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+        <div className="border-t border-gray-200 pt-6 flex flex-col items-center">
+          <p className="text-sm text-gray-500">JPG to AVIF - Privacy-first, browser-based conversion</p>
+          <p className="text-xs text-gray-400 mt-1">© {new Date().getFullYear()} JPG to AVIF. All rights reserved.</p>
+        </div>
       </div>
     </footer>
   );
