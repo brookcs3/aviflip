@@ -16,9 +16,7 @@ export default function Home() {
             {/* Header Section */}
             <div className="text-center mb-8">
               <h1 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-                {siteConfig.defaultConversionMode === 'avifToJpg' 
-                  ? 'Free AVIF to JPG and PNG Converter - Instant Online Conversion' 
-                  : 'Free JPG to AVIF Converter - Instant Online Conversion'}
+                Convert HEIC to JPG
               </h1>
               <p className="mt-3 text-xl text-gray-500 sm:mt-4">
                 Fast, free, and completely private - no files are uploaded to any server
