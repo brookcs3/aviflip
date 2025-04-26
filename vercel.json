@@ -5,6 +5,30 @@
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ],
+  "redirects": [
+    {
+      "source": "/ads.txt",
+      "destination": "https://srv.adstxtmanager.com/19390/aviflip.com",
+      "has": [
+        {
+          "type": "host",
+          "value": "aviflip.com"
+        }
+      ],
+      "permanent": true
+    },
+    {
+      "source": "/ads.txt",
+      "destination": "https://srv.adstxtmanager.com/19390/jpgflip.com",
+      "has": [
+        {
+          "type": "host",
+          "value": "jpgflip.com"
+        }
+      ],
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
