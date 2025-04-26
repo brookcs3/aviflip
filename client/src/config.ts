@@ -1,6 +1,10 @@
 export const siteConfig = {
-  title: "JPG to AVIF Converter",
-  description: "Free online tool to convert JPG files to AVIF format",
-  logoText: "JPG to AVIF",
-  primaryColor: "#4f46e5",
+  title: "AVIFlip - Convert AVIF to JPG in your browser",
+  description: "Free browser-based AVIF to JPG converter. Convert AVIF images to JPG locally without uploading your files to any server.",
+  logoText: "AVIFlip",
+  primaryColor: "#3b82f6",
+  secondaryColor: "#2563eb",
+  accentColor: "#60a5fa",
+  defaultConversionMode: "avifToJpg",
+  domain: "aviflip.com"
 };
