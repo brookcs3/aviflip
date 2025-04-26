@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import HowItWorks from "@/components/HowItWorks";
 import DropConvert from "@/components/DropConvert";
 import TechnicalDetails from "@/components/TechnicalDetails";
+import { siteConfig } from "@/config";
 
 export default function Home() {
   return (
@@ -15,7 +16,9 @@ export default function Home() {
             {/* Header Section */}
             <div className="text-center mb-8">
               <h1 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-                Free AVIF to JPG and PNG Converter - Instant Online Conversion
+                {siteConfig.defaultConversionMode === 'avifToJpg' 
+                  ? 'Free AVIF to JPG and PNG Converter - Instant Online Conversion' 
+                  : 'Free JPG to AVIF Converter - Instant Online Conversion'}
               </h1>
               <p className="mt-3 text-xl text-gray-500 sm:mt-4">
                 Fast, free, and completely private - no files are uploaded to any server
@@ -48,9 +51,9 @@ export default function Home() {
                 </div>
                 
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900">Is AVIFLip secure to use?</h3>
+                  <h3 className="text-lg font-semibold text-gray-900">Is {siteConfig.siteName} secure to use?</h3>
                   <p className="mt-2 text-gray-600">
-                    Yes, AVIFLip processes all conversions entirely in your browser. Your images never leave your device or get uploaded to any server, 
+                    Yes, {siteConfig.siteName} processes all conversions entirely in your browser. Your images never leave your device or get uploaded to any server, 
                     ensuring complete privacy and security for your data.
                   </p>
                 </div>
@@ -81,10 +84,10 @@ export default function Home() {
                   },
                   {
                     "@type": "Question",
-                    "name": "Is AVIFLip secure to use?",
+                    "name": "Is ${siteConfig.siteName} secure to use?",
                     "acceptedAnswer": {
                       "@type": "Answer",
-                      "text": "Yes, AVIFLip processes all conversions entirely in your browser. Your images never leave your device or get uploaded to any server, ensuring complete privacy and security for your data."
+                      "text": "Yes, ${siteConfig.siteName} processes all conversions entirely in your browser. Your images never leave your device or get uploaded to any server, ensuring complete privacy and security for your data."
                     }
                   }
                 ]
