@@ -16,7 +16,7 @@ export default function Home() {
             {/* Header Section */}
             <div className="text-center mb-8">
               <h1 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-                Convert HEIC to JPG
+                Convert AVIF to JPG
               </h1>
               <p className="mt-3 text-xl text-gray-500 sm:mt-4">
                 Fast, free, and completely private - no files are uploaded to any server
