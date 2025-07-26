@@ -1,93 +1,46 @@
 # AVIFlip
 
-<!-- Add your logo here when available -->
-<!-- ![AVIFlip Logo](./path/to/logo.svg) -->
-<!-- Trigger new deploy -->
+**AVIFlip** is an experimental template for creating privacy‑first image converters. It provides a React interface and an optional Express wrapper so all image processing happens locally in the browser. The project began as a quick utility for converting AVIF and JPG files and grew into a reusable starting point for similar tools (for example *WebPFlip* and *JPGFlip*).
 
-A high-performance, privacy-first image converter that transforms images between AVIF and JPG formats with exceptional speed and security.
+## Goals
+- Run entirely in the browser – no uploaded images
+- Offer a simple drag‑and‑drop interface for batch conversion
+- Provide a basic Node/Express setup for local development or self‑hosting
 
-## 🌟 Features
+## Running the Demo
+```bash
+npm install
+npm run dev
+```
+This starts an Express server with Vite in middleware mode on [http://localhost:5000](http://localhost:5000). The client code lives in `client/` and the server entry point is `server/index.ts`.
 
-- **Dual Conversion**: Toggle between AVIF→JPG and JPG→AVIF conversion modes
-- **100% Client-Side Processing**: All conversions happen directly in your browser - no server uploads required
-- **Lightning Fast**: Utilizes Web Workers and parallel processing for optimal performance
-- **Batch Processing**: Convert multiple files simultaneously with intelligent download handling
-- **Smart Downloads**:
-  - Single files download directly in their converted format
-  - Multiple files automatically package into a convenient ZIP archive
-- **Drag & Drop Interface**: Simple, intuitive user experience
-- **Free & Open Source**: No usage limits or hidden costs
+For a production build:
+```bash
+npm run build
+npm start
+```
+Assets are emitted to `dist/public`.
 
-## 💻 Technology Stack
+## Repository Layout
+- `client/` – React UI, web worker, and conversion logic
+- `server/` – minimal Express wrapper used during development
+- `shared/` – small shared types used by the server and client
+- `docs/` – architecture notes including a simple Mermaid diagram
 
-- **Frontend**: React with TypeScript for robust, type-safe code
-- **Styling**: Tailwind CSS for responsive design
-- **Processing**: Web Workers for non-blocking, parallel image conversion
-- **Optimization**: FFmpeg WebAssembly for high-performance media processing
-- **Packaging**: JSZip for creating downloadable archives of multiple conversions
+Several folders like `webp-flip` or `jpgflip-full` show earlier experiments and variants built from this template.
 
-## 🚀 Getting Started
+## Highlight – Conversion Web Worker
+The most interesting piece is the `conversion.worker.ts` file which processes files off the main thread. It reads dropped images, converts them in parallel, and posts progress updates back to React. When multiple files are processed it bundles them into a ZIP file before sending them back.
 
-### Using AVIFlip Online
+```ts
+self.onmessage = async (event) => {
+  const { files, type } = event.data;
+  // ... convert files, generate ZIP when needed
+  self.postMessage({ status: 'success', result: zipBlob });
+};
+```
 
-Simply visit [aviflip.com](https://aviflip.com) to start converting images instantly.
+See the full implementation in `client/src/workers/conversion.worker.ts`.
 
-### Running Locally
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/brookcs3/aviflip.git
-   cd aviflip
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Start the development server:
-   ```bash
-   npm run dev
-   ```
-
-4. Open your browser and navigate to `http://localhost:5000`
-
-## 📑 How It Works
-
-1. **Select Conversion Type**: Toggle between AVIF→JPG or JPG→AVIF mode
-2. **Upload Files**: Drag and drop or browse to select your image files
-3. **Convert**: Click the convert button to process your images
-4. **Download**: Receive your converted images automatically
-   - Single file: Downloads directly as converted format
-   - Multiple files: Downloads as a ZIP archive
-
-## 🛠️ Advanced Usage
-
-- **Batch Processing**: Upload multiple files to convert them all at once
-- **High-Resolution Support**: Works with images of any resolution
-- **Format Optimization**: Maintains optimal quality-to-size ratio in conversions
-
-## 🔒 Privacy & Security
-
-- **No Uploads**: All image processing happens locally in your browser
-- **No Data Collection**: We don't track, store, or analyze your images
-- **No Account Required**: Use instantly without registration
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## ✨ Acknowledgments
-
-- FFmpeg team for their powerful media processing library
-- The open-source community for various supporting libraries
+## Next Steps
+This repository contains several subprojects and prototype scripts. The core `client/` and `server/` directories are runnable, but additional cleanup is required if you intend to publish this as a package. Explore the template script in `create-project-from-template.sh` for generating new converters with different default settings.
